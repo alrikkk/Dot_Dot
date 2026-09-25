@@ -5,7 +5,6 @@
 # DOT DOT.
 
 DOT DOT is a browser-based QR code studio for creating, customizing, and exporting QR codes.
-
 It supports different QR types including URLs, text, email, phone numbers, and Wi-Fi, with live previews and customization options. QR codes can also be exported as PNG or SVG.
 
 ## Tech Stack
