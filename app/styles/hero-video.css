@@ -1,0 +1,483 @@
+/* ─── DOT DOT Hero Stage & 3D Centerpiece ──────────────────────────────────── */
+
+/* The outer hero stage */
+.dotdot-hero {
+    position: relative;
+    width: calc(100% - 24px);
+    height: calc(100vh - 24px);
+    margin: 12px auto;
+    overflow: hidden;
+    background-color: #0d0d0f;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    cursor: url("/assets/Cursor SVG/cursor-pointer.svg") 2 0, pointer;
+}
+
+/* ── Bottom gradient fade so text pops ── */
+.dotdot-hero__fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            transparent 30%,
+            rgba(0, 0, 0, 0.2) 60%,
+            rgba(0, 0, 0, 0.7) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ─── Display Headline ─── */
+.home-header__title {
+    position: absolute;
+    bottom: 72px;
+    left: 0;
+    right: 0;
+    padding: 0 44px;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.dotdot-hero__title {
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6.5vw, 6.5rem);
+    line-height: 1.0;
+    letter-spacing: -3px;
+    color: var(--color-white);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0 0.16em;
+    user-select: none;
+    pointer-events: auto;
+    cursor: url("/assets/Cursor SVG/cursor-text.svg") 2 0, text;
+    --split-percent: 100%;
+}
+
+.dotdot-hero__title * {
+    cursor: url("/assets/Cursor SVG/cursor-text.svg") 2 0, text;
+}
+
+/* Each word span with continuous scroll-driven split-color transition */
+.dotdot-hero__word {
+    display: inline-block;
+    position: static;
+    background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        #ffffff calc(var(--split-percent, 100%) - 0.5%),
+        #3A3835 calc(var(--split-percent, 100%) + 0.5%),
+        #3A3835 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.dotdot-hero__word.is--relative {
+    position: relative;
+}
+
+/* Italic "SCANNABLE." */
+.dotdot-hero__title em {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+
+/* ─── Animated underline under "SCANNABLE." ─── */
+.home-header__title-line-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 104%;
+    color: var(--color-white);
+    overflow: visible;
+    pointer-events: none;
+}
+
+.home-header__title-line-path {
+    stroke-dasharray: 1400;
+    stroke-dashoffset: 1400;
+    animation: draw-oval-underline 1.4s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.3s;
+}
+
+@keyframes draw-oval-underline {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ─── Bottom-Left Controls: Laser toggle ─── */
+.dotdot-hero__controls {
+    position: absolute;
+    bottom: 28px;
+    left: 44px;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dotdot-hero__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--color-white);
+    cursor: url("/assets/Cursor SVG/cursor-pointer.svg") 2 0, pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.2s ease;
+}
+
+.dotdot-hero__btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.7);
+    transform: scale(1.08);
+}
+
+.dotdot-hero__btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ─── DOT DOT Hero Additions ──────────────────────────────────────────────── */
+
+.hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.15;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.4) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+}
+
+.hero-centerpiece {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    transform-style: preserve-3d;
+    cursor: grab;
+}
+
+.hero-qr-frame {
+    position: relative;
+    width: clamp(240px, 32vw, 360px);
+    aspect-ratio: 1 / 1;
+    background: #0e0e11;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 28px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        0 0 40px rgba(255, 59, 25, 0.12);
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-qr-frame:hover {
+    border-color: var(--color-vermilion);
+    box-shadow:
+        0 30px 60px -12px rgba(0, 0, 0, 0.8),
+        0 0 50px rgba(255, 59, 25, 0.25);
+}
+
+.hero-qr-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: pixelated;
+    border-radius: 12px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+}
+
+.hero-qr-fallback {
+    width: 100%;
+    height: 100%;
+    background: #18181b;
+    border-radius: 12px;
+}
+
+.hero-qr-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0e0e11;
+    padding: 8px;
+    border-radius: 8px;
+    border: 2px solid var(--color-vermilion);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Corner Finder accents */
+.hero-finder {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: var(--color-vermilion);
+    border-style: solid;
+    pointer-events: none;
+}
+.hero-finder--tl { top: 10px; left: 10px; border-width: 3px 0 0 3px; }
+.hero-finder--tr { top: 10px; right: 10px; border-width: 3px 3px 0 0; }
+.hero-finder--bl { bottom: 10px; left: 10px; border-width: 0 0 3px 3px; }
+
+/* Laser Scan Line */
+.hero-laser-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #ff3b19, #ff7700, transparent);
+    box-shadow: 0 0 14px #ff3b19;
+    pointer-events: none;
+    animation: heroLaserSweep 2.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes heroLaserSweep {
+    0% { transform: translateY(0); opacity: 0; }
+    15% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { transform: translateY(360px); opacity: 0; }
+}
+
+.hero-qr-caption {
+    display: none !important;
+}
+
+.hero-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-lime);
+    animation: studioPulse 1.8s infinite ease-in-out;
+}
+
+/* CTAs */
+.hero-cta-container {
+    position: absolute;
+    bottom: 28px;
+    right: 44px;
+    z-index: 4;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.4rem;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-cta-btn--primary {
+    background-color: var(--color-vermilion);
+    color: #ffffff;
+    border: 2px solid var(--color-vermilion);
+    box-shadow: 0 4px 16px rgba(255, 59, 25, 0.35);
+}
+
+.hero-cta-btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 59, 25, 0.5);
+    background-color: #ff5233;
+}
+
+.hero-cta-btn--secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.hero-cta-btn--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+.hero-title-wrapper {
+    pointer-events: none;
+}
+.hero-title-wrapper .dotdot-hero__title {
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .hero-cta-container {
+        right: 20px;
+        bottom: 20px;
+        left: 20px;
+        flex-direction: column;
+    }
+    .hero-cta-btn {
+        width: 100%;
+    }
+    .hero-bottom-controls {
+        display: none;
+    }
+}
+
+/* ─── Hero Video Walkthrough Red-Circle Bubble ─────────────────────────── */
+.hero-video-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9995;
+}
+
+.hero-video-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: clamp(320px, 30vw, 420px);
+    background-color: #121215;
+    border: 2px solid var(--color-vermilion);
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow:
+        0 30px 60px -15px rgba(0, 0, 0, 0.85),
+        0 0 0 1px rgba(230, 57, 42, 0.3),
+        0 0 35px rgba(0, 0, 0, 0.6);
+    pointer-events: auto;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.hero-video-card.is-grabbing {
+    cursor: grabbing;
+}
+
+.hero-video-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 4px 10px 4px;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+}
+
+.hero-video-card.is-grabbing .hero-video-topbar {
+    cursor: grabbing;
+}
+
+.hero-video-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Epilogue', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+}
+
+.hero-video-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--color-vermilion);
+    display: inline-block;
+    box-shadow: 0 0 6px rgba(230, 57, 42, 0.6);
+}
+
+.hero-video-drag-hint {
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.4);
+    margin-left: 2px;
+}
+
+.hero-video-close-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+    padding: 0;
+}
+
+.hero-video-close-btn:hover {
+    background-color: var(--color-vermilion);
+    color: #ffffff;
+    transform: scale(1.08);
+}
+
+.hero-video-close-btn:focus-visible {
+    outline: 2px solid var(--color-vermilion);
+    outline-offset: 2px;
+}
+
+.hero-video-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #000000;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    cursor: default;
+}
+
+.hero-video-el {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .hero-video-card {
+        width: calc(100vw - 24px);
+        max-width: 380px;
+    }
+}

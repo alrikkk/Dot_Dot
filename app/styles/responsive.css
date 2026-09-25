@@ -1,0 +1,299 @@
+/* ─── Tablet (769px – 1200px) ────────────────────────────────────────────── */
+@media (min-width: 769px) and (max-width: 1348px) {
+  /* changed the max-width to a better brake point that also accommodate .card-green */
+  .cards-wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    padding-bottom: 50px;
+    gap: 30px;
+    overflow: visible;
+  }
+
+  .card {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    min-height: 400px;
+    margin-bottom: 20px;
+  }
+}
+
+/* ─── Medium screens (≤ 900px) ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-heading {
+    font-size: 1.6rem;
+  }
+}
+
+/* ─── Mobile (≤ 768px) ───────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* ── Navbar ─────────────────────── */
+  .navbar {
+    padding: 14px 16px;
+  }
+
+  .brand-logo--md {
+    font-size: 1.1rem;
+  }
+
+  .navbar-brand-badge {
+    padding: 5px 12px;
+    border-radius: 10px;
+  }
+
+  .nav-left .nav-popout {
+    width: calc(100vw - 32px);
+    max-width: 350px;
+  }
+
+  .logo-work-container {
+    height: 44px;
+  }
+
+  .nav-bar__work-blob-svg {
+    width: 48px;
+    height: 44px;
+  }
+
+  .logo-work-text {
+    font-size: 1.4rem;
+    margin-left: 60px;
+  }
+
+  .nav-bar__whatsapp-svg {
+    width: 26px;
+  }
+
+  /* ── Header Hero ────────────────── */
+  .header-content {
+    height: 100svh;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .header-content h1 {
+    font-size: 2rem;
+  }
+
+  /* ── Content / Hero Title ───────── */
+  .content-section {
+    padding: 80px 0 0;
+    overflow: visible;
+  }
+
+  .main-title {
+    font-size: 3rem;
+    letter-spacing: -2px;
+  }
+
+  .title-underline-svg {
+    width: 100px;
+    bottom: -10px;
+  }
+
+  .title-container {
+    margin-bottom: 50px;
+  }
+
+  /* ── Cards (GSAP-controlled) ─────── */
+  .cards-wrapper {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    overflow: visible !important;
+  }
+
+  .card {
+    width: 82vw;
+    max-width: 340px;
+    min-height: 420px;
+    height: auto;
+  }
+
+  .card-sticker {
+    pointer-events: none;
+  }
+
+  /* ── Double Marquee ─────────────── */
+  .Double-marquee {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 24px;
+    gap: 0;
+    min-height: unset;
+  }
+
+  .marquee-left {
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    min-height: unset;
+    padding-top: 0;
+  }
+
+  .marquee-text-container {
+    text-align: left;
+    width: 100%;
+  }
+
+  .marquee-left h2 {
+    font-size: 2.6rem;
+    letter-spacing: -1.5px;
+    margin: 0;
+  }
+
+  .marquee-blob-container {
+    width: 100px;
+    height: 100px;
+    margin: 1.25rem 0 1.25rem 1.5rem;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  .marquee-stamp-card {
+    width: 100px;
+    height: 100px;
+    border-radius: 22px;
+  }
+
+  .marquee-description {
+    max-width: 100%;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .marquee-underline {
+    position: absolute;
+    bottom: -6px;
+    right: auto;
+    left: 8.5rem;
+    width: 80px;
+  }
+
+  /* ── Logo columns → 2-row horizontal scroll grid ── */
+  .marquee-right {
+    display: grid;
+    grid-template-rows: 130px 130px;
+    grid-auto-flow: column;
+    grid-auto-columns: 130px;
+    gap: 8px;
+    width: 100%;
+    height: auto;
+    margin-right: 0;
+    padding: 20px 24px 32px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .marquee-right::-webkit-scrollbar {
+    display: none;
+  }
+
+  .marquee-column {
+    display: contents;
+  }
+
+  .marquee-column::before,
+  .marquee-column::after {
+    display: none;
+  }
+
+  .marquee-column:nth-child(1) .marquee-track,
+  .marquee-column:nth-child(2) .marquee-track {
+    display: contents;
+    animation: none;
+  }
+
+  .marquee-item {
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0;
+  }
+
+  /* ── Footer ─────────────────────── */
+  .main-footer {
+    padding: 6px;
+  }
+
+  .footer-inner {
+    padding: 44px 20px 32px;
+    border-radius: 14px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-heading {
+    font-size: 1.45rem;
+    letter-spacing: -0.02em;
+  }
+
+  .footer-email {
+    font-size: 1.3rem;
+  }
+
+  .footer-return-top {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+
+  /* ── Footer wordmark & QR objects ── */
+  .footer-bottom {
+    margin-top: 48px;
+  }
+
+  .footer-wordmark-wrap {
+    padding: 18px 0;
+  }
+
+  .footer-qr-obj {
+    transform: scale(0.72);
+  }
+
+  .qr-obj--finder {
+    top: 0;
+    left: 2%;
+  }
+
+  .qr-obj--cluster {
+    top: 2%;
+    right: 2%;
+  }
+
+  .qr-obj--dots {
+    bottom: 2%;
+    left: 4%;
+  }
+
+  .qr-obj--reticle {
+    bottom: 0;
+    right: 4%;
+  }
+
+  .footer-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+}

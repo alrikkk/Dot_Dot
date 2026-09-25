@@ -1,0 +1,268 @@
+/* ─── Footer Shell ───────────────────────────────────────────────────────── */
+.main-footer {
+    padding: 10px;
+    background-color: var(--bg-color);
+}
+
+.footer-inner {
+    background-color: #0d0d10;
+    border-radius: 20px;
+    padding: clamp(56px, 7vw, 96px) clamp(28px, 5vw, 64px) clamp(36px, 5vw, 56px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* ─── Editorial Grid (Top) ───────────────────────────────────────────────── */
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+    position: relative;
+    z-index: 5;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--color-white);
+}
+
+.footer-badge {
+    display: inline-block;
+    font-family: "Epilogue", Arial, sans-serif;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+.footer-heading {
+    font-family: "Epilogue", Arial, sans-serif;
+    font-size: clamp(1.4rem, 2.2vw, 2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    color: var(--color-white);
+}
+
+.footer-copy {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 360px;
+    font-family: "Epilogue", Arial, sans-serif;
+}
+
+/* ─── Middle Column: Navigation ──────────────────────────────────────────── */
+.footer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.footer-nav-link {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-family: "Epilogue", Arial, sans-serif;
+    letter-spacing: -0.01em;
+    display: inline-block;
+    width: fit-content;
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.footer-nav-link:hover {
+    color: var(--color-vermilion);
+    transform: translateX(4px);
+}
+
+/* ─── Right Column: Studio ───────────────────────────────────────────────── */
+.footer-studio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.footer-email {
+    font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+    font-weight: 800;
+    color: var(--color-white);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    font-family: "Epilogue", Arial, sans-serif;
+    display: inline-block;
+    width: fit-content;
+    transition: color 0.2s ease;
+    cursor: pointer;
+}
+
+.footer-email:hover {
+    color: var(--color-vermilion);
+}
+
+.footer-return-top {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: "Epilogue", Arial, sans-serif;
+    letter-spacing: 0.04em;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    width: fit-content;
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.footer-return-top:hover {
+    color: var(--color-vermilion);
+    transform: translateY(-2px);
+}
+
+/* ─── Bottom Area: Editorial Sign-Off ────────────────────────────────────── */
+.footer-bottom {
+    position: relative;
+    width: 100%;
+    margin-top: clamp(60px, 8vw, 110px);
+}
+
+/* ─── Interactive Wordmark Wrap ──────────────────────────────────────────── */
+.footer-wordmark-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(20px, 4vw, 44px) 0;
+    overflow: visible;
+}
+
+/* ─── Optical Scan Line ─────────────────────────────────────────────────── */
+.footer-scan-line {
+    position: absolute;
+    left: 2%;
+    right: 2%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-vermilion) 25%, #ffffff 50%, var(--color-vermilion) 75%, transparent);
+    box-shadow: 0 0 14px rgba(255, 77, 46, 0.75);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 8;
+}
+
+/* ─── QR-Inspired Geometric Objects ─────────────────────────────────────── */
+.footer-qr-obj {
+    position: absolute;
+    z-index: 6;
+    pointer-events: auto;
+    cursor: default;
+    user-select: none;
+    will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.45));
+}
+
+.qr-obj--finder {
+    top: 4%;
+    left: clamp(4%, 7vw, 12%);
+}
+
+.qr-obj--cluster {
+    top: 6%;
+    right: clamp(4%, 7vw, 12%);
+}
+
+.qr-obj--dots {
+    bottom: 10%;
+    left: clamp(6%, 9vw, 16%);
+    display: inline-flex;
+    gap: 7px;
+    padding: 6px 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+}
+
+.qr-chip {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.qr-chip--cream {
+    background: #f5f5f0;
+}
+
+.qr-chip--orange {
+    background: var(--color-vermilion);
+}
+
+.qr-obj--reticle {
+    bottom: 6%;
+    right: clamp(6%, 9vw, 16%);
+}
+
+/* ─── Interactive Wordmark Typography ────────────────────────────────────── */
+.footer-big-text {
+    width: 100%;
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    position: relative;
+    z-index: 5;
+}
+
+.footer-big-text .brand-logo__word {
+    display: inline-block;
+    will-change: transform;
+    cursor: pointer;
+}
+
+.footer-big-text .brand-logo__period {
+    display: inline-block;
+    cursor: pointer;
+    transform-origin: center center;
+    will-change: transform;
+    transition: color 0.15s ease;
+}
+
+/* ─── Bottom Meta Row ────────────────────────────────────────────────────── */
+.footer-bottom-row {
+    margin-top: clamp(24px, 3.5vw, 44px);
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.45);
+    font-family: "Epilogue", Arial, sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.footer-meta {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.4);
+}
