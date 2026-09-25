@@ -2,7 +2,7 @@
 
 
 
-# DOT DOT
+# DOT DOT.
 
 DOT DOT is a browser-based QR code studio for creating, customizing, and exporting QR codes.
 
