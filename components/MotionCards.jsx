@@ -221,7 +221,7 @@ export default function MotionCards() {
                                     ERROR RECOVERY
                                 </h3>
                                 <p style={{ fontSize: '0.88rem', opacity: 0.75, marginTop: '0.5rem' }}>
-                                    L, M, Q, H Reed-Solomon resilience. Tested for physical wear and texture.
+                                    L, M, Q, H Reed-Solomon resilience.
                                 </p>
                             </div>
                             <div style={{ fontFamily: 'monospace', fontSize: '0.8rem', fontWeight: 800 }}>

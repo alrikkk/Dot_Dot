@@ -98,3 +98,68 @@ test('QR Generation Engine (PNG & SVG)', async () => {
     assert.ok(matrix.modules);
     assert.ok(matrix.modules.size > 20);
 });
+
+test('URL Scheme Allowlist & Validation Security', () => {
+    assert.equal(normalizeUrl('example.com'), 'https://example.com');
+    assert.equal(normalizeUrl('https://example.com/path'), 'https://example.com/path');
+    assert.equal(normalizeUrl('http://example.com/path'), 'http://example.com/path');
+    assert.equal(normalizeUrl('javascript://example.com/%0aalert(1)'), '');
+    assert.equal(normalizeUrl('file:///etc/passwd'), '');
+    assert.equal(normalizeUrl('ftp://ftp.example.com'), '');
+
+    assert.equal(validateQrInputs(QR_TYPES.URL, { url: 'https://example.com' }).isValid, true);
+    assert.equal(validateQrInputs(QR_TYPES.URL, { url: 'http://example.com' }).isValid, true);
+    assert.equal(validateQrInputs(QR_TYPES.URL, { url: 'example.com' }).isValid, true);
+
+    const jsUrl = validateQrInputs(QR_TYPES.URL, { url: 'javascript://example.com/%0aalert(1)' });
+    assert.equal(jsUrl.isValid, false);
+    assert.equal(jsUrl.message, 'Only http and https links are supported');
+
+    const fileUrl = validateQrInputs(QR_TYPES.URL, { url: 'file:///etc/passwd' });
+    assert.equal(fileUrl.isValid, false);
+    assert.equal(fileUrl.message, 'Only http and https links are supported');
+
+    const localhostUrl = validateQrInputs(QR_TYPES.URL, { url: 'http://localhost' });
+    assert.equal(localhostUrl.isValid, false);
+    assert.equal(localhostUrl.message, 'Enter a valid domain name');
+
+    const emptyUrl = validateQrInputs(QR_TYPES.URL, { url: '' });
+    assert.equal(emptyUrl.isValid, false);
+    assert.equal(emptyUrl.message, 'Enter a website address');
+});
+
+test('Email Injection Prevention & Validation', () => {
+    const validEmail = validateQrInputs(QR_TYPES.EMAIL, { email: 'name@example.com' });
+    assert.equal(validEmail.isValid, true);
+
+    const injectionEmails = [
+        'a@b.com?bcc=x@y.com',
+        'a@b.com&bcc=x@y.com',
+        'a@b.com#anchor',
+        'a@b.com%0a',
+        'a b@c.com'
+    ];
+    for (const email of injectionEmails) {
+        const res = validateQrInputs(QR_TYPES.EMAIL, { email });
+        assert.equal(res.isValid, false);
+        assert.equal(res.message, 'Enter a valid email address');
+    }
+
+    assert.equal(validateQrInputs(QR_TYPES.EMAIL, { email: ' a@b.com' }).isValid, true);
+    assert.equal(validateQrInputs(QR_TYPES.EMAIL, { email: 'a@b.com ' }).isValid, true);
+
+    const emptyEmail = validateQrInputs(QR_TYPES.EMAIL, { email: '' });
+    assert.equal(emptyEmail.isValid, false);
+    assert.equal(emptyEmail.message, 'Enter an email address');
+
+    const spacesEmail = validateQrInputs(QR_TYPES.EMAIL, { email: '   ' });
+    assert.equal(spacesEmail.isValid, false);
+    assert.equal(spacesEmail.message, 'Enter an email address');
+
+    assert.equal(buildQrPayload(QR_TYPES.EMAIL, { email: 'name@example.com' }), 'mailto:name@example.com');
+    assert.equal(
+        buildQrPayload(QR_TYPES.EMAIL, { email: 'name@example.com', subject: 'Hi', body: 'There' }),
+        'mailto:name@example.com?subject=Hi&body=There'
+    );
+});
+
