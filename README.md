@@ -20,7 +20,7 @@ It supports different QR types including URLs, text, email, phone numbers, and W
 
 Everything runs client-side, with QR generation and customization handled directly in the browser.
 
-# AI Use Note : To finally polish to UI ( 10% - 15%).
+# AI Use Note : To finally fine tune/polish the UI (10% - 15%).
 
 
 ## Preview Of The Application
