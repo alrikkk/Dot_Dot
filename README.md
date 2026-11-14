@@ -20,6 +20,8 @@ It supports different QR types including URLs, text, email, phone numbers, and W
 
 Everything runs client-side, with QR generation and customization handled directly in the browser.
 
+# AI Use Note : To finally polish to UI ( 10% - 15%), CODE WAS NOT TOUCHED BY AI
+
 
 ## Preview Of The Application
 <img width="1512" height="818" alt="Screenshot 2026-09-25 at 8 44 56 PM" src="https://github.com/user-attachments/assets/fb0825c5-5c01-40fb-8c6d-aae7cf553d63" />
